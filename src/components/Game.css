@@ -1,0 +1,168 @@
+.game {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 44px;
+  }
+  
+  .board-row {
+    display: flex;
+  }
+  
+  .square {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    margin-right: -1px;
+    margin-top: -1px;
+    cursor: pointer;
+    font-size: 30px;
+    position: relative;
+  }
+  
+  .square::before,
+  .square::after {
+    content: "";
+    position: absolute;
+    background: rgba(251, 75, 2, 1);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    width: 2px;
+    height: 100%;
+  }
+  
+  .square::before {
+    left: 0;
+  }
+  
+  .square::after {
+    right: 0;
+  }
+  
+  .square:hover::before,
+  .square:hover::after {
+    height: 2px;
+  }
+  
+  .status {
+    margin: 10px 0;
+    font-size: 25px;
+  }
+  
+  .new-game-button {
+    width: 200px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-left: 20px;
+  }
+  
+  .new-game-button:before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  .new-game-button:active {
+    color: #000;
+  }
+  
+  .new-game-button:active:after {
+    background: transparent;
+  }
+  
+  .new-game-button:hover:before {
+    opacity: 1;
+  }
+  
+  .new-game-button:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  
+  @keyframes glowing {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .game {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 50px;
+    }
+    .game-board {
+      font-size: 24px;
+    }
+    .square {
+      width: 80px;
+      height: 80px;
+      font-size: 18px;
+    }
+    .status {
+      font-size: 18px;
+    }
+    .new-game-button {
+      margin: 12px 0 0 0;
+      width: 248px;
+      height: 40px;
+      font-size: 20px;
+    }
+  }
+  
